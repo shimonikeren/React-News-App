@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+//use routes
+app.use(routes);
 
 // Send every request to the React app
 // Define any API routes before this runs
@@ -23,8 +26,7 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-//use routes
-app.use(routes);
+
 
 
 // Connect to the Mongo DB
