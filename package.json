@@ -17,6 +17,7 @@
     "concurrently": "^3.5.0"
   },
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "react-router-dom": "^4.3.1"
   }
 }
