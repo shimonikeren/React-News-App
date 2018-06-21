@@ -9,6 +9,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  create: function(req, res){
+    db.Article
+      .create(req.body)
+      .then(res.status(200).send())
+      .catch(res.status(500).send());
+  },
   findById: function(req, res) {
     db.Article
       .findById(req.params.id)

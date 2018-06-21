@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import axios from "axios";3
 
 class Home extends React.Component {
     state = {
@@ -9,7 +10,10 @@ class Home extends React.Component {
     callAPI(query, start, end){
         API.scrape(query, start, end)
         .then(articles =>{
-            this.setState({articles})
+            console.log(articles);
+            this.setState({
+                articles: articles.data
+            })
         })
     }
 
@@ -26,18 +30,40 @@ class Home extends React.Component {
         }
         else {
             //display articles
+            const articles = this.state.articles.map((article, index) => {
+                const body={
+                    title: article.snippet,
+                    datePub: article.pub_date
+                }
+
+                if (article.byline && article.byline.original){
+                    body.author = article.byline.original;
+                }
+
+                return (
+                <div key={index}> 
+                    <h1>{article.snippet}</h1>
+                    <button onClick={()=>this.saveArticle(body)}>Save</button>
+                </div>
+                )  
+                
+            })
+            
             return (
-            <div>
-                {this.state.articles}
-            </div>
+                
+                <div>{articles}</div>
             )
         }
     }
 
+    saveArticle(body) {
+        axios.post("/api/article/", body)
+        .then(status => console.log(status))
+        .catch(() => console.log("failed to send req"));
+    }
+
     render() {
-        return (
-            {this.showContentByState()}
-        )
+        return this.showContentByState();
     }
 }
 
