@@ -1,6 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
-import axios from "axios";3
+import axios from "axios";
+import "./Home.css";
 
 class Home extends React.Component {
     state = {
@@ -18,40 +19,44 @@ class Home extends React.Component {
     }
 
     showContentByState(){
-        // if we don't have articles show the form with the submit button
-        // We don't have a form yet, so just show a hello and a button
         if (this.state.articles.length === 0){
             return (
                 <div>
-                <p>Hello</p>
-                <button onClick={()=>this.callAPI("dogs")}>Search Articles</button>
+                <p>FORM WILL BE HERE</p>
+                <button onClick={()=>this.callAPI("america")}>Search Articles</button>
                 </div>
             )
         }
         else {
-            //display articles
             const articles = this.state.articles.map((article, index) => {
                 const body={
                     title: article.snippet,
-                    datePub: article.pub_date
+                    datePub: article.pub_date,
+                    url: article.web_url
                 }
-
                 if (article.byline && article.byline.original){
                     body.author = article.byline.original;
                 }
-
+                // console.log(body);       
                 return (
-                <div key={index}> 
-                    <h1>{article.snippet}</h1>
-                    <button onClick={()=>this.saveArticle(body)}>Save</button>
+                <div className="container" key={index}>
+                    <div className="card articleCard">
+                        <h5 className="card-header">{body.title}</h5>
+                        <div className="card-body">
+                            {/* <h5 className="card-title">{body.datePub}</h5> */}
+                            <p className="card-text">{body.author}
+                            </p>
+                            <a className="btn btn-secondary btnStyle" href={body.url} role="button" target="blank">Go to Article</a>
+                            <button  className="btn btn-secondary btnStyle" onClick={()=>this.saveArticle(body)}>Save Article</button>
+                         </div>
+                    </div>
                 </div>
                 )  
                 
             })
             
-            return (
-                
-                <div>{articles}</div>
+        return (
+                <div className="artTitle">Top Articles {articles}</div>
             )
         }
     }
@@ -60,8 +65,15 @@ class Home extends React.Component {
         axios.post("/api/article/", body)
         .then(status => console.log(status))
         .catch(() => console.log("failed to send req"));
+        alert("saved");
+        //redirect to saved componenet 
+        
+
     }
 
+
+
+    
     render() {
         return this.showContentByState();
     }

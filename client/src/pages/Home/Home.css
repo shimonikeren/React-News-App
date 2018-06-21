@@ -1,0 +1,38 @@
+.card-header {
+    color: white;
+    background: rgb(76, 78, 136);
+    font-family: Lucida Console;
+    line-height: 20px;
+    text-align: left;
+}
+
+.articleCard {
+    margin-bottom: 16px;
+    border: 1.5px solid rgb(76, 78, 136);
+}
+
+.card-text {
+    color: rgb(76, 78, 136);
+    font-family: Lucida Console;
+    font-size: 18px;
+    text-align: left;
+}
+
+.card-body{
+    line-height: 5px;
+}
+
+.btnStyle {
+    float: left;
+    display: inline-block;
+    margin: 0 4px 0 0;
+}
+
+.artTitle {
+    clear: both;
+    color: rgb(76, 78, 136);
+    font-family: Lucida Console;
+    text-align: center;
+    font-size: 30px;
+}
+

@@ -4,7 +4,7 @@ import "./NoMatch.css";
 const NoMatch = () => (
     <div className="container text-center noMatchStyle">
     <br /> <br />
-      <h1>404 Page Not Found 😰</h1>
+      404 Page Not Found :(
     </div> 
 );
 
