@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const articlesController = require("../../controllers/articlesController");
 
-// Matches with "/api/articles"
+// Matches with "/api/article"
 router.route("/")
   .get(articlesController.findAll)
   .post(articlesController.create);

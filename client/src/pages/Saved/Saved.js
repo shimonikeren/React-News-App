@@ -28,7 +28,7 @@ class Saved extends React.Component{
 
     render(){
         return (
-            <div> something 
+            <div> something2 
                 {/* {console.log(articles)} */}
             </div>
         )

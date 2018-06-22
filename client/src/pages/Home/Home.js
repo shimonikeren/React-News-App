@@ -22,8 +22,7 @@ class Home extends React.Component {
         if (this.state.articles.length === 0){
             return (
                 <div>
-                <p>FORM WILL BE HERE</p>
-                <button onClick={()=>this.callAPI("america")}>Search Articles</button>
+
                 </div>
             )
         }
@@ -75,7 +74,14 @@ class Home extends React.Component {
 
     
     render() {
-        return this.showContentByState();
+        return (
+            <div>
+            <p>FORM WILL BE HERE</p>
+            <button onClick={()=>this.callAPI("cars")}>Search Articles</button>
+            {this.showContentByState()}
+            
+            
+            </div>)
     }
 }
 

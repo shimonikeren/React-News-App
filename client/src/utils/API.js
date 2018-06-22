@@ -8,7 +8,7 @@ scrape: function(searchTerm, start, end) {
     return axios.get(query);
 },
 getSavedArticles: function() {
-    return axios.get("/");
+    return axios.get("/api/article");
   }
 };
 
