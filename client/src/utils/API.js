@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export default {
 
 scrape: function(searchTerm, start, end) {

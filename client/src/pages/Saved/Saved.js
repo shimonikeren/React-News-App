@@ -40,9 +40,10 @@ class Saved extends React.Component{
                     <div className="card articleCard">
                         <h5 className="card-header">{article.title}</h5>
                         <div className="card-body">
-                            {/* <h5 className="card-title">{article.datePub}</h5> */}
                             <p className="card-text">{article.author}
                             </p>
+                            <p className="card-text smaller">{article.datePub}</p>
+
                             <a className="btn btn-secondary btnStyle" href={article.url} role="button" target="blank">Go to Article</a>
                             <button  className="btn btn-secondary btnStyle" onClick={()=>this.deleteArticle(article._id)}>Delete Article</button>
                          </div>

@@ -36,15 +36,22 @@ class Home extends React.Component {
                 if (article.byline && article.byline.original){
                     body.author = article.byline.original;
                 }
-                // console.log(body);       
+                else{body.author = "No Listed Author"}
+                console.log(body); 
+                if (article.pub_date === undefined)  {
+                    body.datePub = "No Date Provided"
+                }  
+                if (article.snippet === undefined || article.snippet === "")  {
+                    body.title = "No Title Provided"
+                } 
+                
                 return (
                 <div className="container" key={index}>
                     <div className="card articleCard">
                         <h5 className="card-header">{body.title}</h5>
                         <div className="card-body">
-                            {/* <h5 className="card-title">{body.datePub}</h5> */}
-                            <p className="card-text">{body.author}
-                            </p>
+                            <p className="card-text">{body.author}</p>
+                            <p className="card-text smaller">{body.datePub}</p>
                             <a className="btn btn-secondary btnStyle" href={body.url} role="button" target="blank">Go to Article</a>
                             <button  className="btn btn-secondary btnStyle" onClick={()=>this.saveArticle(body)}>Save Article</button>
                          </div>
@@ -77,6 +84,7 @@ class Home extends React.Component {
         return (
             <div>
             <p>FORM WILL BE HERE</p>
+          
             <button onClick={()=>this.callAPI("cars")}>Search Articles</button>
             {this.showContentByState()}
             
