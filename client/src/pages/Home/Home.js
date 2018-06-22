@@ -3,6 +3,8 @@ import API from "../../utils/API";
 import axios from "axios";
 import "./Home.css";
 import Form from "../Form/Form";
+import swal from 'sweetalert';
+
 
 class Home extends React.Component {
     state = {
@@ -70,13 +72,10 @@ class Home extends React.Component {
     }
 
     saveArticle(body) {
+        swal("Article Saved!", "Head over to Saved Page to View.", "success");
         axios.post("/api/article/", body)
         .then(status => console.log(status))
         .catch(() => console.log("failed to send req"));
-        alert("saved");
-        //redirect to saved componenet 
-        
-
     }
 
 
