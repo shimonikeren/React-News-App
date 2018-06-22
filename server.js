@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 
-
 // Define middleware, body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -20,18 +19,8 @@ if (process.env.NODE_ENV === "production") {
 //use routes
 app.use(routes);
 
-// Send every request to the React app
-// Define any API routes before this runs
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
-
-
-
-
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytreact");
-
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);

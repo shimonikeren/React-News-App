@@ -9,33 +9,61 @@ class Saved extends React.Component{
     componentDidMount() {
         this.loadArticles();
       }
-      
-    //   loadArticles = () => {
-    //     API.getSavedArticles()
-    //       .then(res => this.setState({ articles: res.data }))
-    //       .catch(err => console.log(err));
-    //       console.log(res);
-    //   };
 
     loadArticles = () => {
         API.getSavedArticles()
           .then(res =>
             this.setState({ articles: res.data})
+            // console.log(res.data)
           )
           .catch(err => console.log(err));
-      };
+      }
 
+    deleteArticle = (id) => {
+        API.deleteArticle(id)
+        .then(res => this.loadArticles())
+        .catch(err => console.log(err));
+    }
+
+      showContentByState(){
+        if (this.state.articles.length === 0){
+            return (
+                <div className="container">
+                   <p className="card-text"> No saved articles yet. Be the first to save one! </p>
+                </div>
+            )
+        }
+        else {
+            const articles = this.state.articles.map((article, index) => {
+                return (
+                <div className="container" key={index}>
+                    <div className="card articleCard">
+                        <h5 className="card-header">{article.title}</h5>
+                        <div className="card-body">
+                            {/* <h5 className="card-title">{article.datePub}</h5> */}
+                            <p className="card-text">{article.author}
+                            </p>
+                            <a className="btn btn-secondary btnStyle" href={article.url} role="button" target="blank">Go to Article</a>
+                            <button  className="btn btn-secondary btnStyle" onClick={()=>this.deleteArticle(article._id)}>Delete Article</button>
+                         </div>
+                    </div>
+                </div>
+                )  
+                
+            })
+            
+        return (
+                <div className="artTitle">Saved Articles {articles}</div>
+            )
+        }
+    }
 
     render(){
         return (
-            <div> something2 
-                {/* {console.log(articles)} */}
-            </div>
+            this.showContentByState()
         )
     }
 }
-
-
 
 
 export default Saved;

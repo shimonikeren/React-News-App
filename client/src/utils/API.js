@@ -9,6 +9,10 @@ scrape: function(searchTerm, start, end) {
 },
 getSavedArticles: function() {
     return axios.get("/api/article");
+  },
+
+deleteArticle: function(id) {
+    return axios.delete("/api/article/" + id);
   }
 };
 
