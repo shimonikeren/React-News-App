@@ -2,6 +2,7 @@ import React from "react";
 import API from "../../utils/API";
 import axios from "axios";
 import "./Home.css";
+import Form from "../Form/Form";
 
 class Home extends React.Component {
     state = {
@@ -14,7 +15,8 @@ class Home extends React.Component {
             console.log(articles);
             this.setState({
                 articles: articles.data
-            })
+            },
+            () => console.log(this.state))
         })
     }
 
@@ -37,14 +39,14 @@ class Home extends React.Component {
                     body.author = article.byline.original;
                 }
                 else{body.author = "No Listed Author"}
-                console.log(body); 
+                // console.log(body); 
                 if (article.pub_date === undefined)  {
                     body.datePub = "No Date Provided"
                 }  
                 if (article.snippet === undefined || article.snippet === "")  {
                     body.title = "No Title Provided"
                 } 
-                
+
                 return (
                 <div className="container" key={index}>
                     <div className="card articleCard">
@@ -83,7 +85,8 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-            <p>FORM WILL BE HERE</p>
+            {/* <p>FORM WILL BE HERE</p> */}
+            <Form />
           
             <button onClick={()=>this.callAPI("cars")}>Search Articles</button>
             {this.showContentByState()}
