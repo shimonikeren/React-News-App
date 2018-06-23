@@ -1,7 +1,7 @@
 # New York Times, React Article Saver 
 
 **Link to App Demo** 
-[Click Here To for Live Link!](https://aqueous-sea-54218.herokuapp.com/)
+[Click Here for Live Link!](https://aqueous-sea-54218.herokuapp.com/)
 
 ![Alt Text](https://media.giphy.com/media/321A9OqGB00L8lzA2h/giphy.gif)
 
