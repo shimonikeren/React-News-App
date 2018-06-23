@@ -1,5 +1,5 @@
 .inputStyle, subtmitBtn {
-    margin: 0px 4px 2px 12px;;
+    margin: 0px 18px 2px 13px;
 }
 
 .inputStyle {
@@ -8,5 +8,7 @@
     text-align: center;
     color: rgb(77, 73, 72);
     font-family: Lucida Console;
-    /* padding: 5px 10px; */
+   
+    min-width: 254px;
+    max-width: 254px;
 }

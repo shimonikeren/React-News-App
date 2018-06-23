@@ -12,6 +12,7 @@ router.get("/scrape/:searchTerm/:start?/:end?", (req, res) =>{
     console.log(query);
     axios.get(query)
     .then(nytRes =>{
+        console.log(nytRes.data.response.docs);
         res.json(nytRes.data.response.docs)
     })
     .catch(error => res.status(500).json('failed to make request to nyt'))

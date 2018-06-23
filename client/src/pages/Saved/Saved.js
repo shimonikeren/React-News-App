@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
+import swal from 'sweetalert';
 
 class Saved extends React.Component{
     state = {
@@ -14,12 +15,12 @@ class Saved extends React.Component{
         API.getSavedArticles()
           .then(res =>
             this.setState({ articles: res.data})
-            // console.log(res.data)
           )
           .catch(err => console.log(err));
       }
 
     deleteArticle = (id) => {
+        swal("Article Deleted.");
         API.deleteArticle(id)
         .then(res => this.loadArticles())
         .catch(err => console.log(err));

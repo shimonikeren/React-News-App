@@ -3,7 +3,6 @@ const db = require("../models");
 // Defining methods for the articlesController
 module.exports = {
   findAll: function(req, res) {
-    // console.log("~~~~~~~",req);
     db.Article
       .find(req.query)
       .then(dbModel => res.json(dbModel))

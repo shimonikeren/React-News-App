@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
 import "./Form.css";
 
 class Form extends Component {
   state = {
-    articles: [],
     searchTerm: "",
     startYear: "",
     endYear: ""
@@ -17,28 +15,26 @@ class Form extends Component {
   }
 
   handleStartYrKeyPress = event => {
+    const year = event.target.value;
+   const startDate = year + "0101";
     this.setState({
-      startYear: event.target.value
+      startYear: startDate
     })
   }
 
   handleEndYrKeyPress = event => {
+    const year = event.target.value;
+    const startDate = year + "1231";
     this.setState({
-      endYear: event.target.value
+      endYear: startDate
     })
   }
 
-  callAPI(query, start, end){
-    API.scrape(query, start, end)
-    .then(articles =>{
-        this.setState({
-            articles: articles.data
-        },
-        () => console.log(this.state.articles))
-    })
-}
+  handleSubmit = (event, searchTerm, start, end) => {
+    event.preventDefault();
+    this.props.callApi(searchTerm, start, end);
+  }
 
- 
 
   render() {
     return (
@@ -50,24 +46,27 @@ class Form extends Component {
           className="inputStyle"
           type="text"
           placeholder="Search Term(Required)"
-          onKeyPress={(event)=>this.handleSearchKeyPress(event)}
+          onKeyPress={(event)=>this.handleSearchKeyPress(event)
+          }
         /> 
         
         <input
           className="inputStyle"
           type="text"
-          placeholder="Start Year (Optional)"
+          maxLength="4"
+          placeholder="Start Year (Optional) YYYY"
           onKeyPress={(event)=>this.handleStartYrKeyPress(event)}
         />
        
           <input
           className="inputStyle"
           type="text"
-          placeholder="End Year (Optional)"
+          maxLength="4"
+          placeholder="End Year (Optional) YYYY"
           onKeyPress={(event)=>this.handleEndYrKeyPress(event)}
         />
        
-        <button className="btn btn-secondary subtmitBtn" onClick={()=>this.callAPI("cars")}>Submit</button>
+        <button className="btn btn-secondary inputStyle" onClick={(event)=>this.handleSubmit(event, this.state.searchTerm)}>Search Articles</button>
         </div>
        
       </form>

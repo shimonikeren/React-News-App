@@ -1,7 +1,7 @@
 .card-header {
-    color: white;
-    /* background: rgb(76, 78, 136); */
-    background: rgb(77, 73, 72);
+    /* color: rgb(77, 73, 72); */
+    color:black;
+    background: rgb(216, 212, 212);
     font-family: Lucida Console;
     line-height: 20px;
     text-align: left;
@@ -9,12 +9,13 @@
 
 .articleCard {
     margin-bottom: 16px;
-    /* border: 1.5px solid rgb(76, 78, 136); */
-    border: 1.5px solid rgb(77, 73, 72);
+    /* border: 1.5px solid rgb(77, 73, 72); */
+    border: 1.5px solid black;
 }
 
 .card-text {
-    color:rgb(77, 73, 72);
+    /* color:rgb(77, 73, 72); */
+    color:black;
     font-family: Lucida Console;
     font-size: 18px;
     text-align: left;
@@ -31,13 +32,15 @@
 }
 
 .btn-secondary{
-    background: rgb(242, 236, 235);
-    color: rgb(77, 73, 72);
+    background: rgb(216, 212, 212);
+    /* color: rgb(77, 73, 72); */
+    color:black;
 }
 
 .artTitle {
     clear: both;
-    color: rgb(77, 73, 72);
+    /* color: rgb(77, 73, 72); */
+    color:black;
     font-family: Lucida Console;
     text-align: center;
     font-size: 30px;

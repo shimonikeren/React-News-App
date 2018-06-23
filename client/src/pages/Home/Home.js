@@ -11,14 +11,12 @@ class Home extends React.Component {
         articles: []
     }
 
-    callAPI(query, start, end){
+    callAPI = (query, start, end) => {
         API.scrape(query, start, end)
         .then(articles =>{
-            console.log(articles);
             this.setState({
                 articles: articles.data
-            },
-            () => console.log(this.state))
+            })
         })
     }
 
@@ -41,7 +39,6 @@ class Home extends React.Component {
                     body.author = article.byline.original;
                 }
                 else{body.author = "No Listed Author"}
-                // console.log(body); 
                 if (article.pub_date === undefined)  {
                     body.datePub = "No Date Provided"
                 }  
@@ -66,7 +63,7 @@ class Home extends React.Component {
             })
             
         return (
-                <div className="artTitle">Top Articles {articles}</div>
+                <div className="artTitle">Top Articles <br />{articles}</div>
             )
         }
     }
@@ -78,16 +75,12 @@ class Home extends React.Component {
         .catch(() => console.log("failed to send req"));
     }
 
-
-
-    
     render() {
         return (
             <div>
-            {/* <p>FORM WILL BE HERE</p> */}
-            <Form />
-          
-            <button onClick={()=>this.callAPI("cars")}>Search Articles</button>
+            <br />
+            <Form callApi={this.callAPI}/>
+            <br />
             {this.showContentByState()}
             
             
